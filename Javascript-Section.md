@@ -71,7 +71,7 @@
 > NodeList是一个类数组对象，可以通过方括号语法来访问NodeList的值，而且也具有length属性。比如节点的childNodes属性就是一个NodeList
 > NodeList对象的独特之处在于：它实际上基于DOM结构动态执行查询的结构，因此DOM结构的变化能够自动反映在NodeList对象。我们常说，NodeList对象是有生命的有呼吸的，而不是我们第一次访问它们的某个瞬间拍摄下来的一张快照。
 *引申*：类数组对象转化为数组
-> 常见的类数组对象：函数的arguments, NodeList
+> 常见的类数组对象：函数的arguments, NodeList, HTMLCollection
 > 转变为数组的方法：
 >> * Array.prototype.slice.call()
 >> * Array.from()
