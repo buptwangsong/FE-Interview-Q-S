@@ -75,3 +75,19 @@
 > 转变为数组的方法：
 >> * Array.prototype.slice.call()
 >> * Array.from()
+
+* 操作节点
+1. appendChild()
+2. insertBefore()
+3. replaceChild()
+4. removeChild()
+5. clonNode(bool)
+
+* 实现一个函数提供insertafter
+
+* 查找元素
+1. getElementById()
+2. getElementsByTagName()
+3. getElementsByName()
+
+* 实现getElementsByClass()函数
