@@ -62,3 +62,5 @@ const getJSON = function(url){
     console.log(`something error: ${error}`);
   });
 ```
+
+4. Promise 的 API
