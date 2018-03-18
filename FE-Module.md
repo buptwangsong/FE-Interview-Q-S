@@ -85,3 +85,18 @@
 *** 注意 ***
 > ES6 模块的设计思想是尽量的静态化，使得在编译时就能确定模块的依赖关系，以及输入和输出的变量。AMD和CommonJS模块，都只能在运行时确定这些东西。
 > AMD和CommonJS属于`运行时加载`，而 ES6 的Module 属于`编译时加载`或者静态加载，
+
+* CMD （Common Module Defination）
+
+日后总结，[参考这里](https://www.cnblogs.com/futai/p/5258349.html)
+
+CMD是在国内发展起来的，就像AMD有require.js， CMD有个浏览器端的实现Sea.js。 RequireJS和SeaJS要解决的问题是一样的，只不过两者在模块定义方式和模块加载时机上有所区别。
+
+
+***AMD VS CMD
+
+> 两者最明显的区别就是，在模块定义时对依赖的处理不同
+
+>> AMD推崇依赖前置，在定义模块的时候就要声明其依赖的模块
+
+>> CMD推崇就近依赖，只有在用到某个模块的时候再去require
