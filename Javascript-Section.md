@@ -115,12 +115,57 @@
 * 闭包的主要作用是模仿块级作用域和私有变量。
 
 
+### javascript实现快排序
+
+```javascript
+  function quickSort(arr){
+    if(arr.length === 1){
+      return arr;
+    }
+    
+    var midIndex = Math.floor(arr.length/2);
+    var midNum = arr.splice(midIndex,1);
+    var leftArr = [];
+    var rightArr = [];
+    
+    for(var i=0; i<arr.length; i++){
+      if(arr[i] < midNum){
+        leftArr.push(arr[i]);
+      } else{
+        rightArr.push(arr[i]);
+      }
+    }
+    
+    return quickSort(leftArr).concat(midNum, quickSort(rightArr));
+  }
 
 
+```
 
+### 数据类型检测
 
-*
+* 使用`typeof`检测基本数据类型（number、string、boolean、undefined）
 
+> 使用typeof检测`function`时，会返回“function”。 但在 safari 5 和chrome 7之前的版本中， typeof 检测正则表达式也会返回“function”，因为ECMA-262规定，任何内部实现了[[call]]方法的对象在应用了typeof操作符是都应该返回“function”。之后的浏览器都修复了这个问题，typeof应用在正则表达式上时返回object
+
+* 使用 instanceof 检测引用类型
+
+```javascript
+A instanceof B
+```
+> 原理：检测 B.prototype 是否存在于 A的[[prototype]]链上
+
+* Object.prototype.toString.call() 检测所有数据类型
+
+* 检测数组的方法
+
+(1) 方法 instanceof
+```javascript
+  value instanceof Array
+```
+> instanceof 操作符的问题在于，它假定只有一个全局执行环境。如果网页中包含多个框架，那实际上就存在两个以上不同的全局执行环境，从而存在两个以上不同版本的Array构造函数。如果你从一个框架向另一个框架传入了一个数组，那么传入的数组与第二个框架原生创建的数据分别具有各自不同的构造函数。
+
+(2) 方法 Array.isArray()
 
 
 
