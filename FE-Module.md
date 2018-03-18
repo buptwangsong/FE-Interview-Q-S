@@ -1,8 +1,22 @@
 ## 前端工程与模块化
 日后整理，参考：
 [前端工程-基础篇](https://github.com/fouber/blog/issues/10#issuecomment-138308585)
+
 [前端工程与模块化框架](https://github.com/fouber/blog/issues/4)
+
 [前端工程之模块化](http://fex.baidu.com/blog/2014/03/fis-module/)
+
+###前端工程
+
+前端工程一般经历四个阶段：
+（1）库与框架选型
+> 根据项目特征进行技术选型
+（2）简单构建优化
+> 对代码进行压缩、校验，之后以页面为单位进行简单的资源合并。常见的构建工具：grunt和gulp
+（3）JS和CSS的模块化开发
+> JS的模块化方案一般有 AMD、Common.JS、ES6 Module等，CSS的模块化开发一般是在LESS、SASS、Stylus等预处理的import/mixin特性支持下实现的。
+（4）组件化开发与资源管理
+> 前端相比于其他的软件开发，在基础架构上更加迫切的需要组件化开发与资源管理，而解决资源管理的一般思路：一个通用的资源表生成工具和基于表的资源加载框架。
 
 1. javascript 模块化方案
 
