@@ -1,5 +1,11 @@
 ## web 安全
 
+日后完善，参考这里：
+
+1. [常见网络攻击](https://segmentfault.com/a/1190000009514661)
+
+2. [大白话谈CSRF和XSS](https://segmentfault.com/a/1190000007059639)
+
 ### sql 注入
 
 * 定义：
