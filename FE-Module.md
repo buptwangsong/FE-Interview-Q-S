@@ -25,6 +25,10 @@
 
 * 组件化开发
 
+分治的确是非常重要的工程优化手段，前端作为一种GUI软件，光有JS/css的模块化还不够，对于UI组件的分治也有同样迫切的需求。
+
+![](https://github.com/buptwangsong/FE-Knowledge-collection/blob/master/img/components.png)
+
 ### 前端模块化
 
 前端模块化是能够独立提供功能且能够复用的模块化代码，根据复用方式的不同，分为Template模块、JS模块、CSS模块。
