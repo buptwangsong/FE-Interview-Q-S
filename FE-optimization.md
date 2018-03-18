@@ -1,6 +1,8 @@
 ## 前端优化
 
-[日后整理](https://github.com/fouber/blog/issues/3)
+日后整理，参考：
+
+[前端工程与性能优化](https://github.com/fouber/blog/issues/3)
 
 > 前端是一种远程部署，运行时增量下载的GUI软件
 
