@@ -1,4 +1,8 @@
-## 前端工程模块化
+## 前端工程与模块化
+日后整理，参考：
+[前端工程-基础篇](https://github.com/fouber/blog/issues/10#issuecomment-138308585)
+[前端工程与模块化框架](https://github.com/fouber/blog/issues/4)
+[前端工程之模块化](http://fex.baidu.com/blog/2014/03/fis-module/)
 
 1. javascript 模块化方案
 
