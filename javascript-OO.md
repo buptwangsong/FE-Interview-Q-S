@@ -204,6 +204,24 @@
 
 > 所谓的`稳妥对象`是指，没有公共属性，方法也不引用this对象。稳妥对象最适合在一些安全环境中，或者防止数据被其它应用程序改动时使用。
 
+9. class
+
+```javascript
+  class Person {
+    constructor(name, age, job){
+      this.name = name;
+      this.age  = age;
+      this.job  = job;
+    }
+    
+    sayName(){
+      alert(this.name);
+    }
+  }
+
+```
+
+> ES5中的构造函数，相当于ES6 Class中的`constructor`
 
 
 
