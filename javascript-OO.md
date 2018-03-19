@@ -223,5 +223,171 @@
 
 > ES5中的构造函数，相当于ES6 Class中的`constructor`
 
+> 关于ES6 class 的更多细节，参考[这里](http://es6.ruanyifeng.com/#docs/class)
 
+### 继承
 
+1. 原型链
+
+```javascript
+function SuperType(){
+  this.property = true;
+}
+
+SuperType.prototype.getSuperValue = function(){
+  return this.property;
+}
+
+function SubType(){
+  this.property = false;
+}
+
+//继承 SuperType
+SubType.prototype = new SuperType();
+
+SubType.prototype.getSubValue = function(){
+  return this.property;
+}
+```
+
+> javascript的继承主要是通过原型链来实现。原型链的构建是通过将一个类型的实例赋值给另一个类型的原型实现的。
+
+> 实例属性名字的解析是沿着原型链进行的，类似于变量沿着作用域链进行标示符解析。
+
+> 缺点：
+
+>> 对象实例共享所有继承的属性和方法，因此，不适宜单独使用；
+
+>> 字面量重写原型会中断继承关系
+
+>> 创建子类型的实例时，不能向超类型的构造函数传递参数。
+
+2. 借用构造函数
+
+```
+function SuperType(){
+  this.property = true;
+}
+
+function SubType(){
+  SuperType.call(this); //继承了SuperType
+}
+
+```
+
+> 在子类型的构造函数内调用超类型的构造函数
+
+> 缺点：属性无法复用
+
+3. 组合继承
+
+```javascript
+  function SuperType(name){
+    this.name = name;
+  }
+  
+  function SubType(name, age){
+    SuperType.call(this, name);//借用构造函数，实现对实例属性的继承
+    this.age = age;
+  }
+  
+  SubType.prototype = new SuperType(); //借用原型链实现对原型属性和方法的继承
+  SubType.prototype.constructor = SubType;
+  SubType.prototype.sayAge = function(){
+    alert(this.age);
+  }
+```
+
+> 组合继承是最常用的继承方法：使用原型链实现对原型属性和方法的继承，而通过借用构造函数实现对实例属性的继承。
+
+4. 原型式继承
+
+```javascript
+  function Object(o){
+    function F(){};
+    F.prototype = o;
+    
+    return new F();
+  }
+    
+```
+
+> 基本思想：借助原型基于已有的对象创建新对象，同时还不必创建自定义类型。
+
+> 本质上是对传入的对象`o`执行了一次浅复制
+
+> ES5 定义了`Object.create()`方法来规范化原型式继承
+
+5. 寄生式继承
+
+```javascript
+  function createAnother(o){
+    var clone = Object(o);
+    clone.sayHi = function(){
+      alert("HI")
+    };
+    return clone;
+  }
+```
+
+> 基本思路与继承构造函数和工厂模式类似，即创建一个函数用于封装继承过程，在函数内部以某种方式来加强对象，最后返回。
+
+> 在主要考虑对象，而不是自定义类型及构造函数的情况下，该模式很有用。
+
+6. 寄生组合式继承
+
+```javascript
+function inheritPrototype(subType, superType){
+  var prototype = Object.create(superTyep);
+  prototype.constructor = subType;
+  subType.prototype = prototype;
+}
+
+function SuperType(name){
+  this.name = name;
+}
+
+function SubType(name, age){
+  SuperType.call(this, name);
+  this.age = age;
+}
+
+inheritPrototype(SubType, SuperType);
+
+SubType.prototype.sayAge = function(){
+  alert(this.age);
+}
+
+```
+
+> 寄生组合继承解决了组合继承中超类型的构造函数调用两次的问题。
+
+> 基本思路：不为子类型的原型调用超类型的构造函数，而仅仅传递超类型原型的一个副本。
+
+7. class 继承
+
+```javascript
+  class Rectangle{
+    constructor(x, y){
+      this.x = x;
+      this.y = y;
+    }
+    
+    area(){
+      return this.x*this.y
+    }
+  }
+  
+  class ColorRectangle extends Rectangle{
+    constructor(x, y, color){
+      super(x,y);
+      this.color = color;
+    }
+    
+    sayColor(){
+      alert(this.color);
+    }
+  }
+```
+
+> 关于 class 继承的更多细节参考[这里]（http://es6.ruanyifeng.com/#docs/class-extends）
