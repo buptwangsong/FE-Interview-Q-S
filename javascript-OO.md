@@ -390,4 +390,4 @@ SubType.prototype.sayAge = function(){
   }
 ```
 
-> 关于 class 继承的更多细节参考[这里]（http://es6.ruanyifeng.com/#docs/class-extends）
+> 关于 class 继承的更多细节参考[这里](http://es6.ruanyifeng.com/#docs/class-extends)
