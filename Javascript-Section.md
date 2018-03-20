@@ -85,6 +85,17 @@
 
 * 实现一个函数提供insertafter
 
+```javascript
+  function insertAfter(newElement, targetElement){
+    var parentNode = targetElement.parentNode;
+    if(parentNode.lastChild == targetElement){
+      parentNode.appendChild(newElement);
+    } else {
+      parentNode.insertBefore(newElement, targetElement.nextSibling);
+    }
+  }
+```
+
 * 查找元素
 1. getElementById()
 2. getElementsByTagName()
