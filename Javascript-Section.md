@@ -112,8 +112,109 @@
 
 * 闭包是有权访问另一个函数作用域中的变量的函数
 
+* 常见的创建闭包的方式，在一个函数的内部创建另一个函数
+
 * 闭包的主要作用是模仿块级作用域和私有变量。
 
+> 闭包模仿块级作用域
+
+```javascript
+(function(){
+  // 这里是块级作用域
+})();
+```
+
+> 私有变量
+
+>> 使用构造函数模式、原型模式来实现自定义类型上的特权方法（有权访问私有变量和私有函数的方法）
+
+```javascript
+function MyObject(){
+  // 私有变量和私有函数
+  var privateVariable = 10;
+  function privateFunc(){
+    return false;
+  }
+  
+  //特权方法
+  this.publicMethod = function(){
+    privateVariable ++;
+    privateFunc();
+  };
+}
+```
+
+***静态私有变量***
+
+```javascript
+  (function(){
+    //定义私有变量和函数
+    var privateVariable = 10;
+    function privateFunc(){
+      return false;
+    }
+    
+    //构造函数
+    MyObject(){};
+    
+    //公有/特权方法
+    MyObject.prototype.publicFunc = function(){
+      privateVariable++;
+      privateFunc();
+    };
+  })();
+```
+
+>>使用模块模式和增强模块模式实现单例上的特权方法
+
+***模块模式***
+
+```javascript
+  var singleton = function(){
+    
+    //私有变量和私有方法
+    var privateVariable = 10;
+    
+    function privateFunc(){
+      return false;
+    }
+    
+    //特权/公有方法和属性
+    return {
+      publicProperty : true,
+      publicMethod : function(){
+        privateVariable++;
+        privateFunc();
+      }
+    }
+  }();
+```
+
+***增强的模块模式***
+
+```javascript
+  var singleton = function(){
+    
+    //定义私有变量和函数
+    var privateVariable = 10;
+    
+    function privateFunc(){
+      return false;
+    }
+    
+    var obj = new CustomType();
+    
+    //添加特权/公有属性和方法
+    obj.publicProperty = true;
+    
+    obj.publicMethod = function(){
+      privateVariable++;
+      privateFunc();
+    };
+    
+    return obj;
+  }();
+```
 
 ### javascript实现快排序
 
