@@ -8,6 +8,6 @@
 
 > HTML5 新增的语义化标签有：`article`、`header`、`footer`、`section`、`aside`、`nav`
 
-！[](https://github.com/buptwangsong/FE-Knowledge-collection/img/20161015094026098.jpg)
+  ![html5vshtml](https://github.com/buptwangsong/FE-Knowledge-collection/img/20161015094026098.jpg)
 
 2. 
