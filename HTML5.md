@@ -8,6 +8,43 @@
 
 > HTML5 新增的语义化标签有：`article`、`header`、`footer`、`section`、`aside`、`nav`
 
-  ![html5vshtml](https://github.com/buptwangsong/FE-Knowledge-collection/img/20161015094026098.jpg)
+  ![html5vshtml](https://github.com/buptwangsong/FE-Knowledge-collection/blob/master/img/20161015094026098.jpg)
+  
+ **主题结构元素**
+  
+ 1.1 `article`：表示页面中一块与上下文不相关的独立内容。通常是一篇文章，一个页面，一个独立完整的内容模块。一般带有标题，放在`header`标签中。`article`标签可以相互嵌套，使用频率极高, 强调独立性，多注意与`header`标签的使用。
+ 
+ 1.2 `section`：表示页面中的一个内容区块，比如章节。通常由内容和标题组成。
+ 
+ 1.3 `nav`： 导航栏
+ 
+ 1.4 `aside`: `article`内容之外的信息，辅助信息。
+ 
+ 1.5 `time`: 表示时间。
+ 
+ ```html
+  <!-- datetime属性中日期与时间之间要用“T” 文字分隔，“T”表示时间 -->
+  <time datetime="2013-3-6T20:00">2014年3月6日20:00</time>
+ ```
+
+ **非主题结构元素**
+ 
+ 1.6 `header`：从语义上看是文档的页眉，一般用法为：一个具有引导和导航作用的元素。通常放置在一个页面或者页面内的一个内容区块的标题，一个页面内可以含有多个`header`标签。
+
+ 1.7 `footer`: 从语义上看是文档的注脚，一般用法为：一个内容区块的注脚，通常内容为联系信息、相关阅读、版权信息等。
+ 
+ 1.8 `hgroup`: 标题组，对页面中的一个区块，或整个页面的标题进行分组。
+ 
+ 1.9 `address`： 地址
+ 
+ ```html
+ <address>
+  <a href="">作者：张三丰</a>
+  <a href="">地址：武当山</a>
+  <a href="">联系方式：1247</a>
+</address>
+ ```
+ 
+ 1.10 `figure`：表示媒介内容的分组，以及它们的标题。
 
 2. 
