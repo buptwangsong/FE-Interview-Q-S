@@ -26,7 +26,7 @@
 
 > 跨浏览器事件对象的实现
 
-* mouseenter, mouseleave, mouseover, mouseleave, mousemove
+* mouseenter, mouseleave, mouseover, mouseout, mousemove
 1. mouseenter:在鼠标光标从元素外部首次移动到元素范围之内时触发，事件不冒泡，而且在光标移动到后代元素上时不会触发
 2. mouseleave： 位于元素上方的鼠标光标移动到元素范围之外时触发，事件不冒泡，而且在光标移动到后代元素上时不触发。
 
