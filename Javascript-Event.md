@@ -168,23 +168,51 @@ function handler(e){
         }
       }
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-  
+      
   }
-
-
 
 ```
 
 
+### 4. 事件
+
+4.1 UI事件
+
+> `load`事件：当页面完全加载后在`window`上触发，当所有框架都加载完毕后在框架集上面触发；当图片加载完毕后在`<img>`元素上触发；当嵌入的内容加载完毕后`<object>`元素上面触发。
+
+> `unload`事件： 与上面元素对应。
+
+> `error`事件： 当发生`javascript`错误时在`window`上面触发，当无法加载图像时在`<img>`元素上触发，当无法加载嵌入的内容时在`<object>`元素上触发，当有一个或者多个框架无法加载时在框架集上触发。
+
+> `select`事件：当用户选择文本框（`<input>`、`<textarea>`）中的一个或多个字符时触发。
+
+> `resize`事件：当窗口或框架的大小发生变化时在`window`和框架上触发。
+
+> `scroll`事件：当用户滚动带滚动条的元素中的内容时，在该元素上触发。
+
+4.2 焦点事件
+
+> `blur`事件：当元素失去焦点时触发，该事件**不会冒泡**
+
+> `focus`事件：当元素获得焦点时触发，该事件**不会冒泡**
+
+4.3 鼠标与滚轮事件
+
+> `click`/`dbclick`事件。
+
+> `mousedown`/`mouseup`事件.
+
+> `mouseenter`/`mouseleave`事件：当鼠标光标从元素外/内部，首次移动到元素范围之内/外时触发。该事件不冒泡。
+
+> `mouseout`事件：在鼠标指针位于一个元素上方，然后用户将其移入另一个元素时触发。又移入的另一个元素可能位于前一个元素的外部，也可能是这个元素的子元素。该事件冒泡。
+
+> `mouseover`事件：鼠标指针位于一个元素的外部，然后用户将其首次移入另一个元素内部是触发，又移入的元素可能位于前一个元素的外部，也可能是这个元素的子元素。该事件冒泡。
+
+> 坐标位置
+
+>> 客户区坐标：浏览器视口 `event.clientX`, `event.clientY`
+>> 页面坐标： 整个页面 `event.pageX`， `event.pageY`。如果页面没有滚动的话，与客户区坐标相同。
+>> 屏幕坐标： 真个屏幕 `event.screenX`, `event.screenY`。
 
 
 * mouseenter, mouseleave, mouseover, mouseout, mousemove
@@ -208,15 +236,53 @@ function handler(e){
 
 > 只有在鼠标指针离开被选元素时，才会触发 mouseleave 事件。
 
+4.4 键盘与文本事件
+
+> `keydown`事件：当用户按下键盘上的任意键时触发，如果按住不放的话，会重复触发此事件。
+
+> `keypress`事件：当用户按下键盘上的任意**字符**键(能够改变文本的键，包括插入删除键)时触发，如果按住不放的话，会重复触发此事件。
+
+> `keyup`事件：当用户释放键盘上的任意键时触发。
+
+>> 当用户按下一个字符键时，会先触发`keydown`，然后触发`keypress`，且这两个事件都是在文本框发生变化之前触发。最后触发`keyup`.
+
+
+> `textInput`事件：作为`keypress`的补充。当用户在可编辑区域中输入字符时就会触发。
+>> 与`keypress`区别之一：任何可以获得焦点的元素都可以触发`keypress`事件，而只有可编辑区才会触发`textInput`事件。
+>> 与`keypress`区别之二：`textInput`只在用户按下那些能够输入实际字符的键时才会触发。
+
+4.5 HTML5 新增事件
+
+> `DOMContentLoaded`事件：形成完整的DOM树之后就会触发。
+
+> `hashchange`事件：URL中的参数列表（以及URL中“#”后面的所有字符串）发生变化时触发。
+
+4.6 触摸事件与手势事件
+
 * 触摸事件
-1. touchstart: 当手指触摸屏幕时触发，即使已经有一个手指放在了屏幕上也会触发
-2. touchmove: 当手指在屏幕上滑动时连续触发。在这个事件发生期间，调用event.preventDefault()可以阻止滑动。
-3. touchend: 当手指从屏幕上移开时触发。
+> touchstart: 当手指触摸屏幕时触发，即使已经有一个手指放在了屏幕上也会触发
+
+> touchmove: 当手指在屏幕上滑动时连续触发。在这个事件发生期间，调用event.preventDefault()可以阻止滑动。
+
+> touchend: 当手指从屏幕上移开时触发。
 
 触摸事件的对象event，提供了3个用于跟踪触摸的属性：
 1. touches: 表示当前跟踪的触摸操作的Touch对象的数组。
 2. targetTouchs: 特定于事件目标的Touch对象的数组。
 3. changeTouchs: 表示自上次触摸以来发生了什么改变的Touch对象的数组
+
+以上每个`touch`对象，有包含属性：`clientX`、`clientY`、`pageX`、`pageY`、`screenX`、`screenY`、`target`、`identifier`
+
+
+* 触摸事件: iOS 2.0 Safari浏览器支持。
+
+> `gesturestart`：当一个手指已经按在屏幕上，而另一个手指又接触屏幕时才触发。
+
+> `gesturemove`：当触摸屏幕的任何一个手指位置发生变化时触发。
+
+> `gestureend`：当任何一个手指从屏幕上面移开时触发。
+
+
 
 * web页面的内存及性能
 1. 事件委托
