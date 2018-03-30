@@ -1,19 +1,116 @@
-# Javascript Section
+# Javascript Event
 
-### 事件
-* 事件流
-> 事件冒泡
+### 1. 事件流
 
-> 事件捕获
+> **事件流**描述的是页面中的元素接收事件的顺序。
 
-> DOM2级 事件流
+1.1 事件冒泡
 
-* 事件处理程序（绑定事件的几种方式）
-> HTML 事件处理程序
+> 事件开始时由最具体的元素（嵌套层次最深的元素）接收，然后逐级向上传播到较为不具体的元素。
 
-> DOM0 事件处理程序
+1.2 事件捕获
 
-> DOM2 事件处理程序
+> 事件开始时应该由最不具体的元素接收，然后向下逐渐传播到较为具体的元素。
+
+1.3 DOM2级 事件流
+
+> 规定事件流分为三个阶段：事件捕获阶段、处于目标阶段和事件冒泡阶段。
+
+
+### 2. 事件处理程序（绑定事件的几种方式）
+
+2.1 HTML 事件处理程序
+
+> 某个元素支持的每种事件，都可以用一个与事件处理程序同名的HTML特性来指定。这个特性的值应该是能够执行的js代码。
+
+```html
+
+<input type="button" value="Click me" onclick="alert('ok')" />
+
+<input type="button" value="Click me" onclick="showMessage()">
+
+```
+
+> 函数在元素的作用域内执行，也就是说`this`即为目标元素。
+
+> 事件对象`event`作为函数内的一个局部变量存在。
+
+
+2.2 DOM0 事件处理程序
+
+> 将函数赋值给元素的一个事件处理程序属性。
+
+```javascript
+
+var btn = document.getElementById("myBtn");
+btn.onclick = function(){
+  alert("ok");
+}
+
+```
+
+> 函数在元素的作用域内执行，也就是说`this`即为目标元素。
+
+> 事件对象`event`在不同浏览器下行为具有不一致性。
+>> IE 浏览器下，`event`对象作为`window`对象的一个属性存在。
+>> 在非IE浏览器下，`event`对象作为一个参数传入事件处理程序中。
+
+> 如果重复给同一个元素的事件处理程序绑定事件，会覆盖。
+
+2.3 DOM2 事件处理程序
+
+* 非IE浏览器
+> 非IE浏览器定义了`addEventListener`、`removeEventListener`用于事件的绑定与删除。
+
+```javascript
+  var btn = document.getElementById("btn");
+  btn.addEventListener("click", handler, false);
+  btn.removeEventListener("click", handler, false);
+
+  function handler(e){
+    alert("ok");
+  }
+
+```
+
+> 函数在元素的作用域内执行，也就是说`this`即为目标元素
+> `event`对象作为函数参数传入事件处理程序中。
+
+
+
+
+
+* IE浏览器
+> IE 浏览器定义了`attachEvent`、`detachEvent`用于事件的绑定和删除
+
+```javascript
+var btn = document.getElementById("myBtn");
+btn.attachEvent("onclick", handler);
+btn.detachEvent("onclick", handler);
+
+function handler(e){
+  alert("ok");
+}
+
+```
+
+> 函数在全局作用域内执行，也就是说`this`即为`window`。
+> `event`对象作为函数参数传入事件处理程序中。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 > IE 事件处理程序
 
