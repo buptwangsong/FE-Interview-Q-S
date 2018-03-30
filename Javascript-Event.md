@@ -98,30 +98,94 @@ function handler(e){
 > `event`对象作为函数参数传入事件处理程序中。
 
 
+### 3. 事件对象
+
+3.1 DOM中的事件对象
+
+> `event.preventDefault()`取消事件的默认行为
+
+> `event.stopPropagation()`取消事件的进一步冒泡或捕获
+
+> `event.target` 触发事件的目标
+
+> `event.currentTarget` 事件处理程序绑定的元素，等于`this`
+
+3.2 IE中的时间对象
+
+> `event.returnValue = false` 取消事件的默认行为
+
+> `event.cancelBubble = true` 取消事件冒泡
+
+> `event.srcElement` 触发事件的目标
+
+
+### 4. 跨浏览器事件对象的实现
+
+```javascript
+
+  const = EventUtil = {
+    
+    addHandler: function(element, type, handler){
+      if(element.addEventListener){
+        element.addEventListener(type, handler, false);
+      } else if(element.attachEvent){
+        element.attachEvent("on"+type, handler);
+      } else {
+        element["on"+type] = handler;
+      }
+    },
+    
+    removeHandler: function(element, type, handler){
+      if(element.removeEventListener){
+        element.removeEventListener(type, handler, false);
+      } else if(element.detachEvent){
+        element.detachEvent("on"+type, handler);
+      } else {
+        element["on"+type] = null;
+      },
+      
+      getEvent: function(event){
+        return event ? event : window.event;
+      },
+      
+      getTarget: function(event){
+        return event.target || event.srcElement;
+      },
+      
+      preventDefault: function(event){
+        if(event.preventDefault){
+          event.preventDefault();
+        } else {
+          event.returnValue = false;
+        } 
+      },
+      
+      stopPropagation: function(event){
+        if(event.stopPropagation){
+          event.stopPropagation();
+        } else {
+          event.cancelBubble = true;
+        }
+      }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+  }
 
 
 
+```
 
 
 
-
-
-
-
-
-
-
-
-> IE 事件处理程序
-
-> 跨浏览器事件处理程序的实现
-
-* 事件对象
-> DOM中的事件对象
-
-> IE中的时间对象
-
-> 跨浏览器事件对象的实现
 
 * mouseenter, mouseleave, mouseover, mouseout, mousemove
 1. mouseenter:在鼠标光标从元素外部首次移动到元素范围之内时触发，事件不冒泡，而且在光标移动到后代元素上时不会触发
