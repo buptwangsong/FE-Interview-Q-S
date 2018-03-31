@@ -51,3 +51,18 @@
 9. 创建元素节点
 
 > `document.createTextNode("string")`
+
+### DOM 扩展
+
+1. `querySelector()`
+> 接受一个css选择符，返回与该模式匹配的第一个元素，如果没有找到匹配元素，则返回null
+
+2. `querySelectorAll()`
+> 接受一个css选择符，返回与该模式匹配的所有元素，返回值为`NodeList`,即使没有找到匹配的元素，也返回一个空`NodeList`
+
+> *目前已完全支持Selector API Level 1的浏览器有 IE8+, Firefox 3.5+, Safari 3.1+, Chrome和 Opera 10+
+
+### HTML5相关扩展的DOM
+
+1. `getElementByClassName()`
+> 接受一个或者多个用空格分隔开的类名的字符串，返回带有指定类的所有元素的`NodeList`
