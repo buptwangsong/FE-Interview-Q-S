@@ -200,9 +200,88 @@
 
 6. 如果在设计中使用了非标准字体，该如何实现。
 
+> 所谓的`标准字体`是指，一般机器上都会有的，即使没有，也可以用默认字体代替的字体。
+
+**实现方法**
+> 用图片代替
+
+> 用`web fonts`在线字库，比如 `font awesome`
+
+> 使用`css3`的@font-face,定义自己喜欢的任意字体。
+
+```css
+  @font-face{
+    font-family: myFirstFont;
+    src: url('Sansation_Bold.ttf'),
+         url('Sansation_Bold.eot'); /* IE9+ */
+    font-weight: bold;
+  }
+```
+
 7. 在项目开发上，知道哪些优化方法，提升web性能，减少页面加载时间，代码质量和可读性等方面。
 
+**web性能优化**
+> 1. 减少HTTP请求次数：合并文件，使用css sprite.
+
+> 2. 使用CDN，减少http请求的响应时间
+
+> 3. 启用Gzip, 这只 request header： `Accept-Encoding：gzip`
+
+> 4. 启用缓存：`Expires`/`Etag`/`Cache-Control: max-age`
+
+> 5. 减少DNS查询， 配置request header：`Connection: Keep-Alive`
+
+> 6. css文件放在`header`标签内，javascript 文件放在`body`标签底部。
+
+> 7. 避免 css expression
+
+> 8. 尽量使用外联css/js 文件，便于缓存
+
+> 9. 缓存AJAX的请求结果。缓存DOM的查询结果。
+
+**代码层面**
+
+> 1. 尽量避免使用`iframe`
+
+> 2. 尽量避免使用`with`，会延长作用于链
+
+> 3. 尽量避免全局查找。
+
+> 4. 尽量避免使用全局变量。
+
+> 5. 尽量使用`setTimeout`代替`setInterval`，避免页面失去响应。
+
+> 6. 变量命名尽量有意义。
+
+> 7. 适当的注释
+
+> 8. 尽量避免写出巨大的函数
+
+> 9. 尽量避免代码强耦合，比如`swith`
+
+> 10. 尽量模块化
+
+
 8. 列举ES6 常用的一些特性
+
+> 1. 模板字符串
+
+> 2. let/const 声明变量，引入块级作用域
+
+> 3. 箭头函数
+
+> 4. 函数默认参数，不定参数
+
+> 5. `for...of...`遍历具有`iterator`接口的数据结构的成员
+
+> 6. 将`promise`纳入标准，统一了用法，提供了原生的`promise`对象。
+
+> 7. 引入`symbol`类型，避免命名冲突。
+
+> 8. 引入了`class`（类）概念，作为构建对象的模板，并定义了继承方法。
+
+> 9. 定义了`module`
+
 
 9. DIV + css排版的时候，从页面渲染和代码可读性角度，应该注意什么？
 
