@@ -66,3 +66,4 @@
 
 1. `getElementByClassName()`
 > 接受一个或者多个用空格分隔开的类名的字符串，返回带有指定类的所有元素的`NodeList`
+> *目前支持的浏览器有IE9+, Firefox 3+, Safari 3.1+, Chrome和Opera 9.5+*
