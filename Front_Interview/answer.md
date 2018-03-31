@@ -1,6 +1,6 @@
 ## 我的答案
 
-### section one
+### Section one
 来源这里[自己写的面试题，自己想的答案](https://segmentfault.com/a/1190000014028922)
 
 1. 面向对象
@@ -9,13 +9,22 @@
 
 1.1 面向过程的变成思想，实现：`动作（我，火锅）`
 ```javascript
-  // 实现上述需求
+  const eat = function(name, dishes){
+    console.log(`${name} eat ${dishes}`);
+  }
 ```
 
 1.2 用面向对象思想，改写上述需求。
 
 ```javascript
-  //  代码实现
+  function Person(name){
+    this.name = name;
+  }
+  
+  Person.prototype.eat = function(dishes){
+    console.log(`${this.name} eat ${dishes}`);
+  }
+  
 ```
 
 2. 预解析
@@ -25,30 +34,34 @@
 *question 1.
 
 ```javascript
-  alert(a)
-  a();
+  alert(a)  // function a(){alert(10);}
+  a();      // 10
   var a=3;
   function a(){
-    alert(10)
+    alert(10);
   }   
-  alert(a)
+  alert(a) //3
   a=6;
-  a();  
+  a();  // Error a is not a function
 ```
 
 *question 2
 
 ```javascript
-  alert(a)
-  a();
-  var a=3;
+  alert(a) // undefined
+  a(); // Error a is not a function
+  var a=3; 
   var a=function(){
       alert(10)
   }   
-  alert(a)
+  alert(a) // function(){alert(10)}
   a=6;
-  a(); 
+  a(); // Error a is not a function
 ```
+***解析***
+> 1. 变量声明提升
+> 2. 函数声明优先于变量声明
+
 
 3. 事件委托
 
@@ -74,6 +87,50 @@
             <li>8</li>
             <li>9</li>
         </ul>
+        // 一下是作答部分：
+        <scrip>
+          
+          const eventUtil = {
+            addEventHandler: function(element, type, handler){
+              if(element.addEventListener){
+                  element.addEventListener(type, handler, false);
+              } else if(element.attachEvent){
+                  element.attachEvent("on"+type, handler);
+              } else {
+                  element["on"+type] = handler;
+              }
+            }
+  
+            removeEventHandler: function(element, type, handler){
+                // some code ...
+            }
+  
+            getEvent: function(event){
+              return event ? event : window.event;
+            }
+  
+            getTarget: function(event){
+              return event.target || event.srcElement;
+            }
+          }
+          
+  
+  
+          let ulElem = document.getElementById("ul-test");
+          
+          eventUtil.addEventHandler(ulElem, click, handler);
+  
+          const handler = function(e){
+              let event = eventUtil.getEvent(e);
+              let target = eventUtil.getTarget(event);
+  
+              if(target.tagName.toLowCase() === "li"){
+                console.log(target.innerHtml);
+              }            
+    
+          }
+ 
+        </script> 
     </body>
 </html>
 
@@ -94,6 +151,16 @@
           <ul id="ul-test">
 
           </ul>
+  
+          // 代码实现如下
+          <script>
+            let _html = '';
+            for(let i = 0; i<10; i++){
+              _html += `<li>${i}</li>`;                     
+            }
+            let ulElem = document.getElementById("ul-test");
+            ulElem.innerHtml = _html;
+          </script>
       </body>
   </html>
 ```
@@ -109,6 +176,27 @@
 
 ```
 > 修改obj1，不会影响obj.
+
+> 代码实现如下：
+```javascript
+  const clone = function(obj){
+    if(!obj && (typeof obj !== "object")){
+      return obj;
+    }
+    
+    let buffer = obj.constructor === "Object" ? {} : [];
+    
+    for(var key in obj){
+      buffer[key] = (obj[key] && typeof obj[key] === "object") ? clone(obj[key]) : obj[key];
+    }
+    
+    return buffer;
+  }
+
+
+```
+
+
 
 6. 如果在设计中使用了非标准字体，该如何实现。
 
