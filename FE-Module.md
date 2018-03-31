@@ -69,6 +69,26 @@
 
 (2) 模块定义
 
+```javascript
+ //math.js
+ 
+ exports.add = function(){
+   var sum = 0,
+   for(var i = 0; i<arguments.length; i++){
+    sum += arguments[i];
+   }
+   return sum;
+ }
+```
+
+> 在模块中，上下文提供了`require()`方法来引入外部模块。对应引入的功能，上下文提供了`exports`对象用于导出当前模块的方法或者变量，并且它是唯一的导出的出口。在模块中还有一个`module`对象，它代表模块自身，`exports`对象就是`module`对象的属性。
+
+> 模块的定义十分简单，意义在于将类聚的方法和变量等限定在私有作用域中，同时支持引入和导出功能以顺畅的连接上下游依赖。
+
+（3）模块标识
+
+> 模块标识实际上就是传递给`require()`方法的参数，它必须是符合小驼峰命名规则的字符串。
+
 
 ***注意***
 > CommonJS 不适用于浏览器端模块，因为其采用的是`同步加载`方式
@@ -77,6 +97,45 @@
 * AMD (Asynchronous Module Defination)
 
 日后总结：[参考这里](http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html)
+
+> AMD，即异步模块定义。它采用异步方式加载模块，模块的加载不影响它后面语句的执行，所有依赖这个模块的操作都定义在一个回调函数里。等模块加载完成后，这个回调函数才会执行。
+
+> AMD规范的javascript 库 `require.js`
+
+**require.js**
+主要解决了一下两个问题：
+
+> 1. 异步下载js 文件，避免页面失去响应。
+
+> 2. 管理模块之间的依赖性，便于编写和维护
+
+
+(1)模块定义
+
+```javascript
+ define(['moduleA', 'moduleB', 'moduleC'], function(moduleA, moduleB, moduleC){
+   // some code here
+   
+   return {
+    // ... 抛出对象对外接口
+   }
+ })
+
+
+```
+
+（2）模块引用
+
+```javascript
+
+ require(['moduleA', 'moduleB', 'moduleC'], function(moduleA, moduleB, moduleC){
+   //some code..
+ });
+
+```
+
+
+
 
 * ES6 的 Module
 
