@@ -292,13 +292,56 @@
 > 避免使用`css expression`
 
 > css 避免嵌套层次太深
+>> 过度的嵌套会使得代码臃肿、沉余、复杂。CSS文件体积过大，造成性能浪费，影响页面的渲染速度。而且过度依赖于HTML的结构。维护起来极度麻烦。
 
 > 尽量不要使用内嵌样式、行内样式
 
-> 尽量在`head`引入CSS文件
+> 图片设置`width`和`height`, 这样保证在网速比较差或者其它原因无法加载图片的时候，页面布局不会乱。
 
-> 不要使用`@import`，它会导致CSS文件无法并行下载。
+> 图片预加载
+>> 将`#preloader`标记的这个元素加入到文档中，就可以通过`css`的`background`属性将图片加载到屏幕之外的地方。只要这些图片的路径保持不变，当他们再web页面的其他地方被调用时，浏览器就会在渲染的过程中使用预加载的图片。
+
+```css
+  #preloader{
+    background: url(image1.jpg) norepeat, url(image2.jpg) norepeat, url(image3.jpg) norepeat;
+    width: 0;
+    height: 0;
+    visibility: hidden;
+  }
+
+```
+
+>> 这里有个问题，预加载的图片会和页面中的其它资源一起加载，增加了页面的首屏事件。因此，需要用js控制。
+
+```javascript
+  const preloader = function(urlArr, elem){
+    let bgText = '';
+    for(let i = 0, len = urlArr.length; i < len; i++){
+      bgText += `url(${urlArr[i]}) norepeat`;
+    }
+    
+    elem.style.background = bgText.substring(0, -1);
+  }
+  
+  window.onload = function(){
+    preloader(['image1.jpg', 'image2.jpg', 'image3.jpg'], document.getElementById('preloader'));
+  }
+  
+  
+```
+
+> 尽量在`head`引入CSS文件
+>> 浏览器只有在所有的`stylesheets`下载完成之后，才开始渲染整个页面。如果将css文件放在`body`底部，会导致整个页面在某段时间内无样式。
+
+
+> 不要使用`@import`，它会导致CSS文件无法并行下载,。
 >> 使用`@import`引用的文件，只有在引用它的那个CSS文件下载、解析后，浏览器才知道还有一个css文件需要下载。
+
+> 小图标的处理方案：`css sprite`、`base64`、`字体图标`
+
+> 把常用样式封装成公用样式。
+
+> 给`body`样式设置`min-width: 内容宽度`
 
 
 10. 说下对模块化开发的理解，以及模块化开发的好处？
