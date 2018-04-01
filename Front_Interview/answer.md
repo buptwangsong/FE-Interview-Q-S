@@ -193,6 +193,12 @@
     return buffer;
   }
 
+// 另一种实现方法：
+
+const clone = function(obj){
+  return JSON.parse(JSON.stringify(obj));
+}
+// 存在的问题，obj中`undefined`和函数将会被忽略，应为，这两种类型不是JSON的合法数据类型。
 
 ```
 
