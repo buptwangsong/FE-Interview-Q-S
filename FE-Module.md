@@ -80,6 +80,7 @@
    return sum;
  }
 ```
+> 根据`CommonJS`规范，一个单独的文件就是一个模块，每一个模块都有一个独立的作用域，也就是说，模块内的变量无法被模块外的代码读取，除非使用`exports`对象导出。
 
 > 在模块中，上下文提供了`require()`方法来引入外部模块。对应引入的功能，上下文提供了`exports`对象用于导出当前模块的方法或者变量，并且它是唯一的导出的出口。在模块中还有一个`module`对象，它代表模块自身，`exports`对象就是`module`对象的属性。
 
@@ -113,6 +114,16 @@
 (1)模块定义
 
 ```javascript
+ difine(id?, dependencies?, factory);
+
+```
+> `id`：可选参数，用来定义模块的标识，如果没有提供该参数，则使用文件名。
+
+> `dependencies`：当前模块依赖的模块名称数组
+
+> `factory`：工厂方法，模块初始化要执行的函数或者对象，如果为函数，它只会被执行一次，如果是对象，该对象应该是模块的输出。
+
+```javascript
  define(['moduleA', 'moduleB', 'moduleC'], function(moduleA, moduleB, moduleC){
    // some code here
    
@@ -120,8 +131,6 @@
     // ... 抛出对象对外接口
    }
  })
-
-
 ```
 
 （2）模块引用
@@ -151,6 +160,46 @@
 
 CMD是在国内发展起来的，就像AMD有require.js， CMD有个浏览器端的实现Sea.js。 RequireJS和SeaJS要解决的问题是一样的，只不过两者在模块定义方式和模块加载时机上有所区别。
 
+(1)模块定义
+
+```javascript
+ define(id?, deps? factory);
+```
+> 参数的意义与`AMD`相同。
+
+> `sea.js`推崇一个文件一个模块。
+
+> `CMD`推崇依赖就近，因此一般不再`define`函数中写依赖，也就是说，省略`deps`参数。
+
+> `factory` 方法有三个参数：
+
+```javascript
+ factory(require, exports, module)
+
+```
+
+>> `require(id)`：用于在`factory`函数中引入其他模块的对外接口
+
+>> `exports`： 是一个对象，用来向外提供模块接口。
+
+>> `module`：是一个模块，指的是当前对象。
+
+```javascript
+// 定义模块  myModule.js
+define(function(require, exports, module) {
+  var $ = require('jquery.js')
+  $('div').addClass('active');
+  
+  exports = {
+   //抛出模块对外接口
+  }
+});
+
+// 加载模块
+seajs.use(['myModule.js'], function(my){
+
+});
+```
 
 ***AMD VS CMD
 
