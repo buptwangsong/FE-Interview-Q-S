@@ -30,3 +30,33 @@
 2. jQuery 无new 构造
 
 日后整理
+
+
+
+3. 用`jQuery`实现全选功能
+
+```javascript
+  $("#checkAll").change(function(e){
+      $("#box").children(":checkbox").prop("checked", this.is(":checked"));
+  });
+
+```
+
+```html
+  <div align="center">
+     
+    <div id="box">
+      <input type="checkbox" value="1">西瓜
+      <input type="checkbox" value="2">芒果
+      <input type="checkbox" value="3">橙
+      <input type="checkbox" value="4">山竹
+      <input type="checkbox" value="5">草莓
+      <input type="checkbox" value="6">火龙果
+    </div>  
+
+    <br>
+
+    <input type="checkbox" id="allChecked">全选
+  </div>
+
+```
