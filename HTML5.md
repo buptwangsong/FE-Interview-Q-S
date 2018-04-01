@@ -47,4 +47,31 @@
  
  1.10 `figure`：表示媒介内容的分组，以及它们的标题。
 
-2. 
+
+
+2. 新的表单元素及表单特性
+
+2.1 新增的`input`元素类型 
+
+> `email`： 提交表单时自动验证`email`域的值
+
+> `url`： 提交表单时自动验证`url`域的值
+
+> `number`: 用于应该包含数值的输入域，还能够限制接受的数字。显示为有增减箭头的输入框。
+
+> `range`: 应该包含一定范围内数字值的输入域，还能够对显示的数字加以限制。显示为进度条。
+
+> `data pickers`: data/week/month/time/datetime/datetime-local
+
+> `search`
+
+> `color`
+
+```html
+<input type="url" name="user-url" />
+<input type="email" name="user-email" />
+<input type="number" name="points" min="1" max="10">
+<input type="range" name="points" min="1" max="10">
+<input type="data" name="user_date">
+
+```
