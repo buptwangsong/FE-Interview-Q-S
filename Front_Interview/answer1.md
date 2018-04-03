@@ -12,7 +12,7 @@
   <!DOCTYPE html>
 <html>
 	<head>
-    <title>layout</title>
+		<title>layout</title>
 	</head>
 	<body>
 		<div class="left">left</div>
@@ -25,38 +25,38 @@
 
 ```css
       body{
-				display: flex;  // important
-				display: -webkit-flex; //important
-			}
+		display: flex;  // important
+		display: -webkit-flex; //important
+	}
 
-			.left{
-				width: 200px;
-				height: 200px;
-				background-color: grey;
-			}
+	.left{
+		width: 200px;
+		height: 200px;
+		background-color: grey;
+	}
 
-			.right{
-				height: 200px;
-				background-color: yellow;
-				flex: 1; //important
-			}
+	.right{
+		height: 200px;
+		background-color: yellow;
+		flex: 1; //important
+	}
 ```
 
 > 3.2 float + BFC
 
-```
+```css
     .left{
-				width: 200px;
-				height: 200px;
-				background-color: grey;
-				float: left;
-			}
+	width: 200px;
+	height: 200px;
+	background-color: grey;
+	float: left;
+     }
 
-			.right{
-				height: 200px;
-				background-color: yellow;
-				overflow: hidden;
-			}
+	.right{
+		height: 200px;
+		background-color: yellow;
+		overflow: hidden;
+	}
 ```
 
 > 3.3 float + margin-left撑开
