@@ -5,6 +5,54 @@
 
 1. 使用css实现一个持续的动画效果
 
+```html
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>animation moveon</title>
+      <style type="text/css">
+        body{
+          position: relative;
+        }
+  
+        .box{
+          width: 100px;
+          height: 100px;
+          position: absolute;
+          background-color: red;
+          animation: moveon 5s infinite;
+          -webkit-animation: moveon 5s infinite;
+        }
+  
+        @keyframes moveon{
+          from{
+            left: 0px;
+          }
+          to{
+            left: 100px;
+          }
+        }
+  
+       @-webkit-keyframes moveon{
+          from{
+            left: 0px;
+          }
+  
+          to{
+            left:100px;
+          }
+  
+       }
+  
+      </style>
+    </head>
+    <body>
+      <div class="box">box</div>
+    </body>
+  </html>
+
+``
+
 2. 使用js实现一个持续的动画效果
 
 3. 右边宽度固定，左边自适应
@@ -62,10 +110,6 @@
 > 3.3 float + margin-left撑开
 
 > 3.4 position + margin-left撑开
-
-
-
-
 
 
 4. 水平垂直居中
