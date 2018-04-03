@@ -114,13 +114,83 @@
 
 4. 水平垂直居中
 
+```html
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>layout</title>
+		<style type="text/css">
+			.container{
+				width: 300px;
+				height: 300px;
+				background-color: grey;
+			}
+
+			.item{
+				width: 100px;
+				height: 100px;
+				background-color: red;
+			}
+
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="item"></div>
+		</div>
+	</body>
+</html>
+```
+
+> 4.1 flex
+
+```css
+<style type="text/css">
+	.container{
+		display: flex;  
+		display: -webkit-flex;  
+		justify-content: center; 
+		align-items: center; 
+	}
+</style>
+
+```
+
+> 4.2 postion + tansform
+```css
+<style>
+	.container{
+		position: relative;
+		.item{
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform:translate(-50%,-50%); 
+			-webkit-transform: translate(-50%, -50%);
+		}
+	}
+</style>
+```
+
+> 4.3 postion + margin:auto
+
+> 4.4 postion + marin:负值
+
 5. 四种定位的区别
 
 6. 封装一个函数，参数是定时器的时间，.then执行回调函数。
+```javascript
+const sleep = function(time){
+    return new Promise(resolve => setTimeout(resolve, time));
+}
+```
 
 7. 一行代码实现数组去重
-
+```javascript
+[...new Set(arr)]
+```
 8. 怎么判断两个对象相等
+
 
 9. 重排和重绘
 
