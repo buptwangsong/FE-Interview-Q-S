@@ -110,3 +110,9 @@
 8.2 XMLHttpRequest Level2
 
 9. WebSockets
+
+10. draggable API
+
+11. web workers API
+
+12 web storage API
