@@ -14,3 +14,14 @@
 ```javascript
 
 ```
+
+
+
+3. 一元加/减运算符和加/减操作符
+
+```javascript
+      console.log(1+'2'+'2'); //122  
+      console.log(+'1'+-'2'+'2');//-12
+      console.log('A'+'B'+'2');//AB2
+      console.log('A'-'B'+2);//NaN
+```
