@@ -219,6 +219,61 @@ header 元素代表“网页”或“section”的页眉。
 ```html
 <link rel="prerender" href="http://www.gbtags.com/gb/search.htm" />
 ```
+（7）`input`元素的`placeholder`属性
+
+> 当用户还没有输入值的时候，输入性控件可以通过该属性向用户显示描述性信息或提示信息。
+
+```html
+<input type="text" name="name" placeholder="First and Last name">
+```
+
+* 修改`placeholder`的样式
+
+```css
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    #909;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    #909;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    #909;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:    #909;
+}
+```
+
+（8）`input`的`autocomplete`属性
+
+> 规定输入字段是否应该启用自动完成功能。
+
+> 自动完成功能允许浏览器预测对字段的输入。当用户开始输入时，浏览器基于之前输入过的值，应该显示出在字段中填写的选项。
+
+> 该属性可用于`form`和下面的`input`
+
+```html
+<input type="text" name="name" autocomplete="on">
+```
+
+（9）`input`的`autofocus`属性
+
+> autofocus 属性规定当页面加载时 input 元素应该自动获得焦点。
+> 一个页面中只允许设置一个该属性，如果设置了多个，相当于为启用该功能
+
+```html
+<input type="text" name="fname" autofocus="autofocus" />
+```
+
+
+（10）`input`的`spellcheck`属性
+
+> 对文本域的内容进行拼写检查
+
+```html
+<p contenteditable="true" spellcheck="true">这是可编辑的段落。请试着编辑文本。</p>
+```
+
 *********************************************
 
 3. 废除了一些元素：纯表现的元素、只有部分浏览器支持的元素、对可用性产生负影响的元素
@@ -388,6 +443,17 @@ html5的`Geolocation API`(地理定位API)，可以请求用户共享他们的�
 ************************
 
 9. WebSockets
+
+> WebSockets主要解决了http协议的一大缺点：通信只能有客户端发起。
+
+> Websockets属于应用层协议，使用`ws://`（非加密）`wss://`（加密）作为协议的前缀。该协议不实行同源策略，只要服务器支持，就可以用它来进行跨域通信。
+
+> WebSockets提供了双向的、按序到达的数据流。websockets的连接是持久的，它通过在服务器和客户端之间保持双工连接，服务器端的更新可以及时的推送到客户端，而不需要客户端以一定的时间间隔去轮训。
+
+> webSockets协议的主要特点：服务器可以主动向客户端推动信息，客户端也可以主动向服务器推送信息，是真正的双向平等对话，属于服务器推送技术的一种。
+
+> 关于websockets的详细细节参考这里[websockets教程](http://www.ruanyifeng.com/blog/2017/05/websocket.html)
+
 
 ******************
 
