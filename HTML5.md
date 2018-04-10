@@ -459,6 +459,31 @@ html5的`Geolocation API`(地理定位API)，可以请求用户共享他们的�
 
 10. draggable API
 
+> 当元素的`draggable`属性为`true`时，该元素可拖拽
+
+```html
+<p draggable="true">This is a draggable paragraph.</p>
+```
+
+> 在拖拽的过程中，会触发的事件：
+
+
+
+    dragstart：网页元素开始拖动时触发。
+
+    drag：被拖动的元素在拖动过程中持续触发。
+
+    dragenter：被拖动的元素进入目标元素时触发，应在目标元素监听该事件。
+
+    dragleave：被拖动的元素离开目标元素时触发，应在目标元素监听该事件。
+
+    dragover：被拖动元素停留在目标元素之中时持续触发，应在目标元素监听该事件。
+
+    drap：被拖动元素或从文件系统选中的文件，拖放落下时触发。
+
+    dragend：网页元素拖动结束时触发。
+
+
 **********************
 
 11. web workers API
