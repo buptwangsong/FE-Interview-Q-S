@@ -236,9 +236,67 @@ header 元素代表“网页”或“section”的页眉。
 
 4. canvas 
 
+>`canvas`元素为页面提供一块画布来展示图形。结合`Canvas API`就可以在这个画布上动态生成和展示图形、图标、图像和动画。
+> `canvas`本质上是位图画布，不可缩放，绘制出来的对象不属于页面DOM结构或者任何的命名空间。不需要将每个图元当做对象处理，执行性能非常好。
+
+> 利用`canvas API`绘图，首先要获取`canvas`元素的上下文，然后用该上下文封装好的各种功能绘图。
+
+```javascript
+<canvas id="canvas">替代内容</canvas>
+<script>
+    var canvas = document.getElementById('canvas');
+    var context =canvas.getContext("2d"); // 获取上下文
+    //设置纯色
+    context.fillStyle = "red";
+    context.strokeStyle = "blue";
+    // 实践表明在不设置fillStyle下的默认fillStyle为black
+    context.fillRect(0, 0, 100, 100);
+    // 实践表明在不设置strokeStyle下的默认strokeStyle为black
+    context.strokeRect(120, 0, 100, 100);
+</script>
+```
+
 5. SVG
 
+> `svg`是html5的另一项绘图功能，它是一种标准的矢量图形，是一种图像格式，有自己的API
+> html5引入了内联的`svg`元素，使`svg`元素可以直接出现在html文档中。
+
+```html
+<svg width="100px" height="100px"><circle cx="50px" cy="50px" cr="50px" /></svg>
+```
+
 > canvas VS svg
+
+* canvas
+（1） canvas 依赖javascript来绘制2D图像，是逐像素进行渲染的。在`canvas`中一旦图像绘制完毕，它就不会再得到浏览器的关注。如果其位置发生了变化，那么整个场景也需要重新绘制，包括任何或许已被图形覆盖的对象。
+
+（2）依赖分辨率
+
+（3）不支持事件处理器
+
+（4）弱的文本渲染能力
+
+（5）能够以`.jpg`和`.png`格式保存结果图像
+
+（6）适合图像密集型的游戏，其中很多图像会被频繁的重新绘制
+
+（7）`echart`是基于canvas的
+
+* SVG
+
+（1） `svg`是一种使用xml描述的2D图像语言。`SVG`基于`XML`意味着SVG DOM中的每个对象都是可用的，你可以为某个元素附加上javascript的事件处理器。
+
+（2） 在`svg`中每个被绘制的图像均被视为对象。如果`svg`对象的属性发生了变化，那么浏览器能够自动重现图像。
+
+（3）不依赖分辨率
+
+（4）支持事件处理器
+
+（5）最适合带有大型渲染区域的应用程序（比如，谷歌地图）
+
+（6）复杂度高会减慢渲染速度，任何过度使用DOM的应用都不会快。
+
+（7）不适合游戏应用。
 
 6. `audio`和`vedio`
 
