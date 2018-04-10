@@ -363,11 +363,17 @@ let hasVideo = !!(document.createElement("video").canPlayType);
 
 7. geolocation API
 
+html5的`Geolocation API`(地理定位API)，可以请求用户共享他们的位置。如果用户同意，浏览器就会返回地理位置信息。该定位信息由支持html5地理定位功能的底层设备提供给浏览器。地位信息包括经度、纬度坐标和一些其它元数据。
+
 ****************************
 
 8. communication API
 
 8.1 跨文档消息传递 postMessage
+
+> 提供了一种在浏览器窗口、标签页和iframe间安全的进行跨源通信的方式。
+
+细节参考这里[浏览器同源策略及规避方法](http://www.ruanyifeng.com/blog/2016/04/same-origin-policy.html)
 
 8.2 XMLHttpRequest Level2
 
