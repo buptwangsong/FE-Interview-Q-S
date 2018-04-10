@@ -204,8 +204,21 @@ header 元素代表“网页”或“section”的页眉。
 
 > 让浏览器预先加载用户访问完当前页面后极有可能访问的其它资源（页面，图片，视频）
 
-> 浏览器的兼容性：Chrome和Firefox都支持，其它浏览器不明确
+> 浏览器的兼容性：支持的浏览器有Chrome(13以后), Firefox, IE 11
 
+(6) `link`元素`rel`属性的`prerender`值
+
+> 预先下载并渲染一个用户极可能访问的页面。
+
+> Prerender是Google的一个发明，致力于减少用户在加载页面时的等待时间, 通过`最相近匹配原则`来加载例如“下一页”的文章, 例如最佳推荐，当用户访问A页面的时候, 用户最可能访问的下一个页面上B 那么就预加载B页面, 以达到提升加载速度的效果。
+
+> 浏览器兼容性：支持的浏览器有Chrome , IE11
+
+> 一些其它细节，可以参考这里[prefetch/prerender](http://www.php.cn/html5-tutorial-361854.html)
+
+```html
+<link rel="prerender" href="http://www.gbtags.com/gb/search.htm" />
+```
 
 3. 废除了一些纯表现的元素
 
