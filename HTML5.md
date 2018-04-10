@@ -26,6 +26,7 @@
 
   ![html5vshtml](https://github.com/buptwangsong/FE-Knowledge-collection/blob/master/img/20161015094026098.jpg)
   
+  关于新增标签如何使用的细节，参考这里[理解HTML语义化](https://www.cnblogs.com/fliu/articles/5244866.html)
   
  1.1 `article`：表示页面中一块与上下文不相关的独立内容。通常是一篇文章，一个页面，一个独立完整的内容模块。一般带有标题，放在`header`标签中。`article`标签可以相互嵌套，使用频率极高, 强调独立性，多注意与`header`标签的使用。
  
@@ -117,15 +118,93 @@ header 元素代表“网页”或“section”的页眉。
 
 2.2 表单特性
 
+关于这些特性的细节，参考这里[前端开发攻城师绝对不可忽视的五个HTML5新特性 ](https://segmentfault.com/a/1190000003989795)
+
 （1）`input`元素的`pattern`属性
+
+> 用于检测用户的输入是否符合特定的模式，`pattern`属性接一个正则表达式。
+
+> 所有主流浏览器都支持该属性
+
+>示例如下
+
+```html
+<input type="email" pattern="[^ @]*@[^ @]*" value="">
+```
+
+> 补充
+
+* 关于正则表达式，参考这里[正则表达式手册](http://tool.oschina.net/uploads/apidocs/jquery/regexp.html)
+* 常用的正则表达式
+
+> `email`：`^[\w_-]+@[\w_-]+(\.[\w_-]+)+$`--只允许英文字母、数字、下划线、英文句号、以及中划线组成
+> `tel`: `^1[3|4|5|8]\d{9}`
 
 （2）`a`标签的`download`属性
 
+> 不通过后台，直接下载指定的资源，`download`接下载后文件的重命名。
+> 兼容性：只有高版本的`Firefox`和`Chrome`才支持。
+> 如果需要下载的资源是跨域的（包括跨子域），不同的浏览器表现的很不一致，Chrome可以下载资源，但不能重置文件名，而Firefox直接忽略download属性。
+
+```html
+<a href="/images/myw3schoolimage.jpg" download="w3logo">
+```
+
+> 补充
+* 传统的做法是，后台提供一个下载资源的API，供前端有下载需求时调用，具体调用方式参考这里[HTML无刷新下载文件方法总汇](https://segmentfault.com/a/1190000002923363)
+
 （3）`datalist`元素
+
+> 限定用户的输入为`datalist`中`option`列出的几项。达到的效果是可以自动补齐，
+
+> 所有主流浏览器都支持该元素
+
+>需要配合`input`元素的`list`属性使用，示例代码如下：
+```html
+<form action="/server" method="post">
+    <input list="jslib" name="jslib" >
+    <datalist id="jslib">
+        <option value="jQuery">
+        <option value="Dojo">
+        <option value="Prototype">
+        <option value="Augular">
+    </datalist>
+    <input type="submit" value="完成" />
+</form>
+```
 
 （4）`link`标签`rel`属性的值`dns-prefetch`
 
-（5）`link`标签`rel`属性的值`prefetch`
+> DNS预先加载处理，控制浏览器预先解析指定的域名。
+
+> 前端优化涉及DNS的有两点：一是减少DNS的请求次数（可以设置适当数量的域名，或者设置DNS缓存来减少该项），二是DNS的预解析。
+
+> 浏览器兼容性：目前绝大多数的浏览器都支持该属性值
+
+> 其它一些细节，可以参考这里：[前端优化系列之一：DNS预获取 dns-prefetch 提升页面载入速度](https://www.cnblogs.com/lhm166/articles/6073787.html)
+
+```html
+<link rel="dns-prefetch" href="//www.gbtags.com">
+<link rel="dns-prefetch" href="//www.gbin1.com">
+<link rel="dns-prefetch" href="//m.gbin1.com">
+<link rel="dns-prefetch" href="//s.gbin1.com">
+```
+
+（5）资源的预先加载`prefetch`
+
+```html
+<link rel='prefetch' href='secondary.js'>
+```
+
+>`Firefox`浏览器还提供了一种额外的写法
+
+```
+<meta http-equiv="link" content="<secondary.js>, rel=prefetch"
+```
+
+> 让浏览器预先加载用户访问完当前页面后极有可能访问的其它资源（页面，图片，视频）
+
+> 浏览器的兼容性：Chrome和Firefox都支持，其它浏览器不明确
 
 
 3. 废除了一些纯表现的元素
