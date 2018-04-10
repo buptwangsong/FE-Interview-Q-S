@@ -4,10 +4,12 @@
 
 2. 如何实现一个图片的slider效果
 
-3. jQuery是如何实现promise效果的
+3. 跨域
 
-4. 如何保证前端代码安全
+4. jQuery是如何实现promise效果的
 
-5. get和post的区别
+5. 如何保证前端代码安全
 
-6. web优化
+6. get和post的区别
+
+7. web优化
