@@ -350,6 +350,13 @@ your browser does not support the video tag
 
 > 浏览器支持性检测
 
+检测浏览器是否支持某个元素的一般思路是：使用脚本动态的创建该元素，然后检测特定的函数是否存在。
+```javascript
+let hasVideo = !!(document.createElement("video").canPlayType);
+```
+
+*注意：`!!()`是用来进行类型转换为boolean的。
+
 
 ******************************
 
