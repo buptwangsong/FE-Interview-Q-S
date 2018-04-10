@@ -373,9 +373,17 @@ html5的`Geolocation API`(地理定位API)，可以请求用户共享他们的�
 
 > 提供了一种在浏览器窗口、标签页和iframe间安全的进行跨源通信的方式。
 
-细节参考这里[浏览器同源策略及规避方法](http://www.ruanyifeng.com/blog/2016/04/same-origin-policy.html)
+> 细节参考这里[浏览器同源策略及规避方法](http://www.ruanyifeng.com/blog/2016/04/same-origin-policy.html)
 
 8.2 XMLHttpRequest Level2
+
+`XMLHttpRequest API`使得AJAX技术成为可能，作为`XMLHttpRequest`的改进版本，`XMLHttpRequest Level2`在功能上有了很大的改进，主要有两个方面：
+
+（1）跨源的`XMLHttpRequest`
+（2）进度事件
+
+关于跨域资源共享的细节，参考这里[跨域资源共享](http://www.ruanyifeng.com/blog/2016/04/cors.html)
+
 
 ************************
 
