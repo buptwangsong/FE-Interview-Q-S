@@ -309,7 +309,47 @@ header 元素代表“网页”或“section”的页眉。
 
 6. `audio`和`vedio`
 
+`audio`和`video`元素的出现为html5的媒体应用提供了新的选择，开发人员不必安装插件就可以播放音频和视频。对这两个元素来说，html5提供了通用、完整、可脚本化控制的API。
+
+html5规范出来之前，在页面中播放视频的典型方式是使用Flash、QuickTime或者Windows Media插件往html中嵌入音频视频，相对这种方式，使用html5的媒体标签有两大好处。
+
+（1）作为浏览器原生支持的功能，新的audio和video元素无需安装。
+
+（2）媒体元素像Web页面提供了通用、集成和可脚本化控制的API。
+
+* audio
+```hmtl
+// example 1
+<audio controls>
+  <source src="horse.ogg" type="audio/ogg">
+  <source src="horse.mp3" type="audio/mpeg">
+您的浏览器不支持 audio 元素。
+</audio>
+
+//example 2
+<audio src="/i/horse.ogg" controls="controls">
+Your browser does not support the audio element.
+</audio>
+```
+
+* video
+```html
+//example 1
+
+<video width="320" height="240" controls>
+    <source src="movie.mp4" type="video/mp4">
+    <source src="movie.ogg" type="video/ogg">
+    您的浏览器不支持 video 标签。
+</video>
+
+//example 2
+<video src="/i/movie.ogg" controls="controls">
+your browser does not support the video tag
+</video>
+```
+
 > 浏览器支持性检测
+
 
 ******************************
 
