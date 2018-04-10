@@ -220,7 +220,19 @@ header 元素代表“网页”或“section”的页眉。
 <link rel="prerender" href="http://www.gbtags.com/gb/search.htm" />
 ```
 
-3. 废除了一些纯表现的元素
+3. 废除了一些元素：纯表现的元素、只有部分浏览器支持的元素、对可用性产生负影响的元素
+
+3.1 纯表现的元素
+
+纯表现的元素是那些完全可以用css来代替的元素，例如`big`、`center`、`u`、`strike`、`tt`、`font`、`basefont`
+
+3.2 对页面产生负影响的元素
+
+主要有`frame`、`frameset`、`noframes`，html5只支持`iframe`元素
+
+3.3 只有部分浏览器支持的元素
+
+对于applet、bgsound、blink、marquee等元素，由于只有部分浏览器支持，特别是bgsound元素以及marquee元素，只被IE支持，所以在html5中被废除。其中applet元素可由embed元素或object元素替代，bgsound元素可由audio元素替代，marquee可以由javascript编程的方式替代。
 
 4. canvas 
 
