@@ -54,3 +54,39 @@ RFC7231里定义了HTTP方法的几个性质：
 > RFC协议规定，`GET`、`HEAD`和某些情况下的`POST`方法是可缓存的。但绝大多数浏览器的实现里仅仅支持`GET`、`POST`的缓存。
 
 7. web优化
+
+影响一个网络请求的因素有两个：带宽和延时。今天的网络基础设施建设已经使得网络带宽得到极大的提升，大多数情况下都是网络延迟在影响响应速度。
+
+web性能优化的终极目标就是减少用户端的延时，让用户能够尽快的打开前端页面，并进行交互。对客户端而言，就是发送尽可能少的数据给服务器，从服务器下载竟可能少的数据，尽可能的减少round trips time。
+
+（1）减少http请求次数：css sprites、合并css和js文件。
+
+（2）启用缓存，缓存分为两种：客户端缓存和服务器缓存
+
+> 服务器缓存：CDN
+
+> 客户端缓存又分为两种：强缓存和协商缓存
+
+>> 强缓存在response header 中设置`expires`、`cache-control:max-age`
+>> 协商缓存通过设置http header中 `last-modified/if-modified-since`、`Etag/if-none-match`
+
+（3）启用压缩
+
+> 设置request header 中`Accept-Encoding: Gzip`来通知服务器。
+
+（4）DNS优化，包括两个方面：减少DNS查询，和DNS预解析
+
+> 减少DNS查询次数
+
+>> 设置request header 中`Connection: Keep-Alive`(`close`关闭)来告诉服务器本次请求结束后不断开TCP连接
+
+>> 使用适当数量的域名
+
+> DNS预解析
+
+>> <link rel="dns-prefetch" href="www.baidu.com">
+
+
+
+
+
