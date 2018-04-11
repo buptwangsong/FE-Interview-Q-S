@@ -84,7 +84,34 @@ web性能优化的终极目标就是减少用户端的延时，让用户能够�
 
 > DNS预解析
 
->> <link rel="dns-prefetch" href="www.baidu.com">
+<link rel="dns-prefetch" href="www.baidu.com">
+
+（5）使用外联的CSS和javascript文件，将CSS放置在`header`中，将javascript放置在`body`底部，精简css和javascript文件。
+
+（6）避免重定向，通过在URL的末尾添加`/`，可以避免一部分重定向。
+
+（7）移除重复的脚本文件
+
+（8）首屏外资源按需加载，静态资源延迟加载，预加载。
+
+> 图片资源按需加载
+
+```html
+<img width="100px" height="100px" data-src="真实的图片地址" src="一张加载中的gif图片">
+```
+
+然后监听`scroll`滚动事件，如果图片的位置在可视区内，则将`data-src`属性的值塞进`src`属性中即可。
+
+> 预加载
+>> 利用css 的background属性，将图片加载到屏幕之外的地方，只要这些图片的路径保持不变，当他们在`web`页面的其它地方被调用时，浏览器就可以只用之前已经加载缓存的图片了。
+
+>> 利用`link`标签的`rel`属性的`prefetch`，预加载指定的文档资源。
+
+（9）缓存更新
+
+> 以文件内容的`hash`值为依据生成新文件的非覆盖式发布策略是解决静态资源缓存更新最有效的手段。
+
+（10）图片设置`width`和`height`属性，这样当网速比较差或者其它原因无法加载图片的时候，页面布局不会乱。
 
 
 
