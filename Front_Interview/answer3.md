@@ -12,6 +12,9 @@ Reference
 
 4. jQuery是如何实现promise效果的
 
+Reference
+1. [大白话讲解Promise（三）搞懂jquery中的Promise](https://www.cnblogs.com/lvdabao/p/jquery-deferred.html)
+
 5. 如何保证前端源代码代码安全
 
 Reference：
