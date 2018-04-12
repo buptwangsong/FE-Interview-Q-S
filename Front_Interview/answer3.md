@@ -8,7 +8,13 @@
 
 4. jQuery是如何实现promise效果的
 
-5. 如何保证前端代码安全
+5. 如何保证前端源代码代码安全
+
+Reference：
+
+（1）[前端源码安全](https://www.cnblogs.com/lovesong/p/5185543.html)
+
+（2）[前端如何给 JavaScript 加密（不是混淆）？](https://www.zhihu.com/question/47047191)
 
 6. get和post的区别
 
