@@ -2,6 +2,10 @@
 
 1. 移动端如何识别左滑、右划
 
+Reference
+
+1.[HTML5 移动端的上下左右滑动问题 ](https://segmentfault.com/q/1010000002585476)
+
 2. 如何实现一个图片的slider效果
 
 3. 跨域
